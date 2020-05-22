@@ -9,7 +9,8 @@ public class finan {
 		Scanner sc = new Scanner(System.in);
 		
 		String nome;
-		double salario;
+		double salario, porcentagem, valorFinanciado, conta;
+		int prestacao;
 		
 		System.out.println("DIGITE OS DADOS DO FINANCIAMENTO");
 		System.out.println("Nome do cliente: ");
@@ -20,6 +21,23 @@ public class finan {
 			System.out.println("Digite um valor positivo para salário. Tente novamente: ");
 			salario = sc.nextDouble();
 		}
+		
+		boolean bol = true;
+		while(bol) {
+			System.out.println("Numero de prestacoes: ");
+			prestacao = sc.nextInt();
+			System.out.println("Porcentagem de entrada: ");
+			porcentagem = sc.nextDouble();
+			System.out.println("Valor total financiado: ");
+			valorFinanciado = sc.nextDouble();
+			
+			conta = ( porcentagem/100.0 )*valorFinanciado;
+			conta = ( valorFinanciado - conta ) / prestacao;
+			if(conta <= salario*0.30) {
+				bol = false;
+			}
+		}
+		
 		
 		sc.close();
 	}
